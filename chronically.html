@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -340,7 +341,7 @@
                 <div class="topic-grid">
 
 
-                    <article class="topic-item">
+                    <a class="topic-item" href="#latest" data-filter="womens-health">
 
                         <div class="topic-icon">
                             ♡
@@ -356,11 +357,11 @@
                             people talked about more.
                         </p>
 
-                    </article>
+                    </a>
 
 
 
-                    <article class="topic-item">
+                    <a class="topic-item" href="#latest" data-filter="food">
 
                         <div class="topic-icon">
                             ✦
@@ -375,11 +376,11 @@
                             guilt, or impossible routines.
                         </p>
 
-                    </article>
+                    </a>
 
 
 
-                    <article class="topic-item">
+                    <a class="topic-item" href="#latest" data-filter="chronic-life">
 
                         <div class="topic-icon">
                             ☁
@@ -395,11 +396,11 @@
                             doesn't make it easy.
                         </p>
 
-                    </article>
+                    </a>
 
 
 
-                    <article class="topic-item">
+                    <a class="topic-item" href="#latest" data-filter="nuri-notes">
 
                         <div class="topic-icon">
                             ☺
@@ -415,11 +416,11 @@
                             overthinking at Nuri.
                         </p>
 
-                    </article>
+                    </a>
 
 
 
-                    <article class="topic-item">
+                    <a class="topic-item" href="#latest" data-filter="things-we-love">
 
                         <div class="topic-icon">
                             ✉
@@ -435,7 +436,7 @@
                             the group chat.
                         </p>
 
-                    </article>
+                    </a>
 
 
                 </div>
@@ -470,11 +471,16 @@
 
 
 
+                <p class="article-filter-status" hidden>
+                    showing <strong data-filter-label></strong>
+                    <button type="button" class="article-filter-clear">show all</button>
+                </p>
+
                 <div class="article-grid">
 
 
                     <!-- ARTICLE 01 -->
-                    <article class="article-card">
+                    <article class="article-card" data-category="nuri-notes">
 
                         <a href="./why-are-we-building-a-recipe-app.html" class="article-image">
 
@@ -489,7 +495,7 @@
                         <div class="article-content">
 
                             <p class="article-category">
-                                NURI DIARY
+                                NURI NOTES <span class="article-tag">· the why</span>
                             </p>
 
                             <h3>
@@ -515,7 +521,7 @@
 
 
                    <!-- ARTICLE 02 -->
-<article class="article-card">
+<article class="article-card" data-category="nuri-notes">
 
     <a href="./what-we-learned-from-dietitians.html" class="article-image">
         <img
@@ -527,7 +533,7 @@
     <div class="article-content">
 
         <p class="article-category">
-            NURI DIARY
+            NURI NOTES <span class="article-tag">· dietitian insights</span>
         </p>
 
         <h3>
@@ -557,28 +563,26 @@
 
 
                     <!-- ARTICLE 03 -->
-                    <article class="article-card">
+                    <article class="article-card article-card--soon" data-category="all">
 
-                        <a href="#" class="article-image">
+                        <div class="article-image">
 
                             <img
                                 src="./assets/NURI_LOGO.png"
                                 alt="Nuri logo"
                             >
 
-                        </a>
+                        </div>
 
 
                         <div class="article-content">
 
                             <p class="article-category">
-                                NURI DIARY
+                                NURI NOTES
                             </p>
 
                             <h3>
-                                <a href="#">
-                                    more soon
-                                </a>
+                                more soon
                             </h3>
 
                             <p>
@@ -586,9 +590,9 @@
                                 and honest conversations are on the way.
                             </p>
 
-                            <a href="#" class="read-link">
-                                COMING SOON →
-                            </a>
+                            <span class="read-link">
+                                COMING SOON
+                            </span>
 
                         </div>
 
@@ -623,115 +627,6 @@
                     still figuring it out.
                     <span>♡</span>
                 </blockquote>
-
-            </div>
-
-        </section>
-
-
-
-        <!-- =================================================
-             GROUP CHAT / ROUNDUP
-        ================================================== -->
-
-        <section class="roundup-section">
-
-            <div class="section-container">
-
-
-                <div class="roundup-heading">
-
-                    <span class="handwritten-label">
-                        currently...
-                    </span>
-
-                    <h2>
-                        in the Nuri group chat
-                    </h2>
-
-                </div>
-
-
-
-                <div class="roundup-grid">
-
-
-                    <div class="roundup-item">
-
-                        <span class="roundup-number">
-                            01
-                        </span>
-
-                        <span class="roundup-type">
-                            READING
-                        </span>
-
-                        <h3>
-                            something we bookmarked
-                            this week
-                        </h3>
-
-                    </div>
-
-
-
-                    <div class="roundup-item">
-
-                        <span class="roundup-number">
-                            02
-                        </span>
-
-                        <span class="roundup-type">
-                            EATING
-                        </span>
-
-                        <h3>
-                            the recipe currently
-                            saving our week
-                        </h3>
-
-                    </div>
-
-
-
-                    <div class="roundup-item">
-
-                        <span class="roundup-number">
-                            03
-                        </span>
-
-                        <span class="roundup-type">
-                            RD SAID
-                        </span>
-
-                        <h3>
-                            one nutrition note
-                            worth remembering
-                        </h3>
-
-                    </div>
-
-
-
-                    <div class="roundup-item">
-
-                        <span class="roundup-number">
-                            04
-                        </span>
-
-                        <span class="roundup-type">
-                            NURI HQ
-                        </span>
-
-                        <h3>
-                            what we're building
-                            behind the scenes
-                        </h3>
-
-                    </div>
-
-
-                </div>
 
             </div>
 
@@ -939,6 +834,39 @@
 
     </footer>
 
+
+    <script>
+        (function () {
+            var tiles = document.querySelectorAll('.topic-item[data-filter]');
+            var cards = document.querySelectorAll('.article-card[data-category]');
+            var status = document.querySelector('.article-filter-status');
+            var label = status && status.querySelector('[data-filter-label]');
+            var clear = status && status.querySelector('.article-filter-clear');
+
+            function applyFilter(slug, name) {
+                cards.forEach(function (card) {
+                    var cat = card.getAttribute('data-category');
+                    card.hidden = slug && cat !== 'all' && cat !== slug;
+                });
+                tiles.forEach(function (t) {
+                    t.classList.toggle('is-active', t.getAttribute('data-filter') === slug);
+                });
+                if (status) {
+                    status.hidden = !slug;
+                    if (label) label.textContent = name || '';
+                }
+            }
+
+            tiles.forEach(function (tile) {
+                tile.addEventListener('click', function () {
+                    var name = tile.querySelector('h3').textContent.trim();
+                    applyFilter(tile.getAttribute('data-filter'), name);
+                });
+            });
+
+            if (clear) clear.addEventListener('click', function () { applyFilter(null); });
+        })();
+    </script>
 
 </body>
 
