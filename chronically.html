@@ -51,7 +51,7 @@
                 aria-label="Go back to Nuri"
             >
                 <img
-                    src="./assets/NURI_LOGO.png"
+                    src="./assets/NURI_WORDMARK.png"
                     alt="Nuri"
                     class="nuri-logo-img"
                 >
@@ -135,7 +135,7 @@
 
 
                     <!-- HERO SIGNUP -->
-                    <form class="signup-form hero-signup">
+                    <form class="signup-form hero-signup" method="POST" action="https://d5ab9ed9.sibforms.com/serve/MUIFAG_w5v1QggcmrfeYDYnRJC3-uWJoBatyOdX9PDTMaEZq_Fk0bdGcNX6KNIIoamBqcVMDlFqmAgwr2Dmy_4RsCBDGg1L9c3mJu90NO8dQ91bqyNZ5LanQ6Acm4XWG6dsCyUNvNlgiMWJ-CmJD_as5NQPjTI0Bv6_TWsiob3hSaqaKHq1RYvMK0RGJBYDfm-RBlMMUEX94G_yd7w==" data-brevo novalidate>
 
                         <label for="hero-email" class="sr-only">
                             Email address
@@ -144,7 +144,8 @@
                         <input
                             type="email"
                             id="hero-email"
-                            name="email"
+                            name="EMAIL"
+                            autocomplete="email"
                             placeholder="you@email.com"
                             required
                         >
@@ -153,7 +154,12 @@
                             Join the newsletter →
                         </button>
 
+                        <input type="text" name="email_address_check" value="" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true">
+                        <input type="hidden" name="locale" value="en">
+
                     </form>
+
+                    <p class="signup-status" role="status" aria-live="polite" hidden></p>
 
 
                     <p class="signup-note">
@@ -720,7 +726,7 @@
 
 
 
-                <form class="signup-form footer-signup">
+                <form class="signup-form footer-signup" method="POST" action="https://d5ab9ed9.sibforms.com/serve/MUIFAG_w5v1QggcmrfeYDYnRJC3-uWJoBatyOdX9PDTMaEZq_Fk0bdGcNX6KNIIoamBqcVMDlFqmAgwr2Dmy_4RsCBDGg1L9c3mJu90NO8dQ91bqyNZ5LanQ6Acm4XWG6dsCyUNvNlgiMWJ-CmJD_as5NQPjTI0Bv6_TWsiob3hSaqaKHq1RYvMK0RGJBYDfm-RBlMMUEX94G_yd7w==" data-brevo novalidate>
 
                     <label for="footer-email" class="sr-only">
                         Email address
@@ -729,7 +735,8 @@
                     <input
                         type="email"
                         id="footer-email"
-                        name="email"
+                        name="EMAIL"
+                        autocomplete="email"
                         placeholder="you@email.com"
                         required
                     >
@@ -738,7 +745,12 @@
                         I'm in →
                     </button>
 
+                    <input type="text" name="email_address_check" value="" class="sr-only" tabindex="-1" autocomplete="off" aria-hidden="true">
+                    <input type="hidden" name="locale" value="en">
+
                 </form>
+
+                <p class="signup-status" role="status" aria-live="polite" hidden></p>
 
 
                 <p class="signup-note">
@@ -788,7 +800,7 @@
                 >
 
                     <img
-                        src="./assets/NURI_LOGO.png"
+                        src="./assets/NURI_WORDMARK.png"
                         alt="Nuri"
                         class="footer-logo-img"
                     >
@@ -805,19 +817,21 @@
 
             <div class="footer-links">
 
-                <a href="#">
+                <a href="https://www.instagram.com/nurirecipes/" target="_blank" rel="noopener noreferrer">
                     Instagram
                 </a>
 
-                <a href="#">
+                <a href="https://www.tiktok.com/@nurirecipes" target="_blank" rel="noopener noreferrer">
                     TikTok
                 </a>
 
-                <a href="#">
+                <!-- LinkedIn: paste the company page URL below and uncomment
+                <a href="https://www.linkedin.com/company/YOUR-PAGE/" target="_blank" rel="noopener noreferrer">
                     LinkedIn
                 </a>
+                -->
 
-                <a href="#">
+                <a href="./privacy.html">
                     Privacy
                 </a>
 
@@ -865,6 +879,64 @@
             });
 
             if (clear) clear.addEventListener('click', function () { applyFilter(null); });
+        })();
+    </script>
+
+    <script>
+        /* Chronically signups -> Brevo (same list as the landing page form) */
+        (function () {
+            var EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+            document.querySelectorAll('form[data-brevo]').forEach(function (form) {
+                var input = form.querySelector('input[name="EMAIL"]');
+                var button = form.querySelector('button[type="submit"]');
+                var status = form.nextElementSibling;
+                var label = button.innerHTML;
+
+                function show(msg, isError) {
+                    status.textContent = msg;
+                    status.hidden = false;
+                    status.classList.toggle('is-error', !!isError);
+                }
+
+                form.addEventListener('submit', function (e) {
+                    e.preventDefault();
+                    var email = input.value.trim();
+                    if (!EMAIL_RE.test(email)) {
+                        show('Hmm, that email doesn’t look right. Mind checking it?', true);
+                        input.focus();
+                        return;
+                    }
+
+                    var body = new URLSearchParams(new FormData(form));
+                    button.disabled = true;
+                    button.textContent = 'Signing you up…';
+
+                    function done() {
+                        form.reset();
+                        show('You’re in ♡ welcome to Chronically.');
+                    }
+                    function fail() {
+                        show('Your subscription couldn’t be saved. Please try again.', true);
+                    }
+
+                    // Try Brevo's ajax endpoint first so errors can be read;
+                    // if the browser won't let us read the reply, send it anyway.
+                    fetch(form.action + (form.action.indexOf('?') > -1 ? '&' : '?') + 'isAjax=1', {
+                        method: 'POST', body: body
+                    })
+                        .then(function (r) { return r.json().catch(function () { return { success: r.ok }; }); })
+                        .then(function (data) { if (data && data.success === false) { fail(); } else { done(); } })
+                        .catch(function () {
+                            return fetch(form.action, { method: 'POST', mode: 'no-cors', body: body })
+                                .then(done, fail);
+                        })
+                        .finally(function () {
+                            button.disabled = false;
+                            button.innerHTML = label;
+                        });
+                });
+            });
         })();
     </script>
 
