@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -11,9 +12,16 @@
   <link rel="stylesheet" href="https://sibforms.com/forms/end-form/build/sib-styles.css">
   <link rel="stylesheet" href="landingpage.css">
   <style>
-    /* Header logo: uses assets/NURI_LOGO.png, cropped to the wordmark (image has built-in padding) */
-    .brand-logo{display:block;position:relative;overflow:hidden;width:92px;height:34px}
-    .brand-logo img{position:absolute;max-width:none;width:139px;height:auto;left:-26px;top:-41.5px}
+    /* Header logo: tightly cropped wordmark, sized by height so it stays crisp and centred */
+    .brand{display:inline-flex;align-items:center}
+    .brand-logo{display:block;line-height:0}
+    .brand-logo img{display:block;height:36px;width:auto;max-width:none}
+    @media(max-width:760px){.brand-logo img{height:30px}}
+    /* "Coming soon" stand-in for app links until launch */
+    .btn-soon{background:#f8d4d1;color:var(--green-dark);cursor:default;pointer-events:none}
+    .btn-soon:hover{transform:none}
+    .btn-soon-light{background:rgba(255,255,255,.18);color:#fff;border:1px solid rgba(255,255,255,.5)}
+    .cta-sub-link{display:block;margin-top:16px;color:#fff;opacity:.85;text-decoration:underline;font-size:14px}
     /* Condition pills in Why Nuri (the matching rules in landingpage.css are not being applied) */
     .mission-condition-pills{display:flex;flex-wrap:wrap;gap:10px;margin-top:34px;padding-top:30px;border-top:1px solid #e8e0d5}
     .mission-condition-pills span{background:#fff;border:1px solid rgba(51,81,63,.12);border-radius:999px;padding:9px 13px;font-size:12px;color:#516154}
@@ -22,14 +30,14 @@
 <body>
 <header class="site-header">
   <div class="container nav-wrap">
-    <a class="brand" href="#top" aria-label="Nuri home"><span class="brand-logo"><img src="assets/NURI_LOGO.png" alt="Nuri"></span></a>
+    <a class="brand" href="#top" aria-label="Nuri home"><span class="brand-logo"><img src="assets/NURI_WORDMARK.png" alt="Nuri"></span></a>
     <nav class="main-nav" aria-label="Main navigation">
       <a href="#how">How it works</a>
       <a href="#recipes">Recipes</a>
       <a href="chronically.html">Chronically</a>
       <a href="#why">About</a>
     </nav>
-    <div class="nav-actions"><a class="text-link" href="#">Sign in</a><a class="btn btn-primary btn-small" href="#get-app">Get the app</a></div>
+    <div class="nav-actions"><span class="btn btn-small btn-soon" aria-label="Nuri app coming soon">App coming soon</span></div>
   </div>
 </header>
 
@@ -40,7 +48,7 @@
         <p class="eyebrow">NUTRITION MADE FOR REAL LIFE</p>
         <h1>Food that works<br><em>with your body.</em></h1>
         <p class="hero-text">Personalized recipes, weekly planning, shopping, symptom tracking, and RD-backed nutrition support — all in one app built for women with chronic conditions.</p>
-        <div class="hero-actions"><a href="#get-app" class="btn btn-primary">Get the app</a><a href="#how" class="inline-link">See how it works <span>→</span></a></div>
+        <div class="hero-actions"><span class="btn btn-soon">App coming soon</span><a href="#how" class="inline-link">See how it works <span>→</span></a></div>
         <div class="trust-row"><span class="trust-stars">★★★★★</span><span><strong>RD-backed recipes</strong> · Built for women's health</span></div>
       </div>
 
@@ -142,10 +150,10 @@
     </div>
   </section>
 
-  <section class="final-cta" id="get-app"><div class="container cta-box"><p class="eyebrow light">NURI</p><h2>Food should support your life.<br><em>Not take it over.</em></h2><p>Open Nuri for personalized recipes, weekly planning, shopping, and nutrition support built around the health conditions women actually manage.</p><a href="#" class="btn btn-light">Get the app</a></div></section>
+  <section class="final-cta" id="get-app"><div class="container cta-box"><p class="eyebrow light">NURI</p><h2>Food should support your life.<br><em>Not take it over.</em></h2><p>Personalized recipes, weekly planning, shopping, and nutrition support built around the health conditions women actually manage. The Nuri app is launching soon.</p><span class="btn btn-soon btn-soon-light">Coming soon</span><a class="cta-sub-link" href="#chronically">Join the newsletter to hear when we launch →</a></div></section>
 </main>
 
-<footer class="footer"><div class="container footer-grid"><a class="brand footer-brand" href="#top">nuri<span>.</span></a><p>Food that works for your body.</p><div class="footer-links"><a href="#why">Why Nuri</a><a href="#recipes">Recipes</a><a href="chronically.html">Chronically</a><a href="#why">About</a><a href="#">For RDs</a></div></div></footer>
+<footer class="footer"><div class="container footer-grid"><a class="brand footer-brand" href="#top">nuri<span>.</span></a><p>Food that works for your body.</p><div class="footer-links"><a href="#why">Why Nuri</a><a href="#recipes">Recipes</a><a href="chronically.html">Chronically</a><a href="#why">About</a><a href="mailto:join@nurirecipes.com?subject=Working%20with%20Nuri">For RDs</a><a href="privacy.html">Privacy</a></div></div></footer>
 
 <script>
   window.REQUIRED_CODE_ERROR_MESSAGE = 'Please choose a country code';
